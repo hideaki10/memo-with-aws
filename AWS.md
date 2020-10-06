@@ -25,7 +25,21 @@ EC2
 
 5.3 パーテンション → 各パーティションにはラックが対応、アプリケーション内ハードウェア障害による影響を隔離
 
+6 AMI Amazon Manage Image
 
+6.1テンプレートによって複数EC2を作られる
+
+6.2 どのユーザが起動できる設定できる→ 起動許可
+
+6.3 起動時にアタッチするEBSが設定できる　→ Blocak Device Mapping
+
+Fully baked AMI  OS , App ミドルウェア全部を一つイメージにする。　メンテナンスが面倒になる　小規模システムに向け
+
+Hybrid AMI　osと一部ミドルウェアをイメージにする。他は設定ファイルやAgantで取得する
+
+JeOS AMI 　OSだけをイメージにする。他は設定ファイルやAgantで取得する　大規模システムに向け
+
+起動時間が長くなる
 
 
 
@@ -78,7 +92,29 @@ interface型（private link）　→ 実体はENI セキュリテーグループ
 
 11 AWS Direct Connect
 
+専有ネットワークサービス、インターネットを経由しなくてもデータのやりとり
 
+通信の帯域が保証＆セキュリティ的に安全
+
+12 Direct Connect 仮想インターフェース
+
+12.1 private vpc内部にアクセスできるようになる
+
+12.2 public リージョン内のサービスにアクセスできるようになる
+
+12.3 transit → Direct Connect gateway　→ 　transit gateway → 複数VPCにアクセスする
+
+Direct Connect gateway　→ 複数VPCにアクセスすることができる　→　同一アカウントが必要
+
+13 virtual private gateway
+
+Direct Connect gateway や VPNはVPCに繋ぐするとき必要なもの
+
+14 vpcピアリング
+
+他VPCと繋ぐことができる
+
+　
 
 
 
@@ -117,6 +153,34 @@ interface型（private link）　→ 実体はENI セキュリテーグループ
 2.ライフサイクルポリシーよりデータ移行できない
 
 3.Glacierへのデータ移行ができない
+
+4EC2にアタッチスするストレージ 　IOPS　→　１秒間　i/oの回数
+
+4.1.汎用SSD　ディフォルト 開発テスト環境
+
+4.2.IOPS SSD　高いがぷフォーマンスが優秀なSSD　高性能DBへ接続時に利用
+
+4.3 io2 provisioned IOPS 
+
+4.4.スループットHDD　ワークロードに向け低コストHDD　ビックデータ　ログ
+
+4.5.Cold HDD 一番安い
+
+5 スナップショット
+
+5.1 EBSをバックアップとして取得したファイル
+
+5.2 S3に保存される
+
+5.3 スナップショット自体をEC2にアタッチすることができない
+
+5.4 増分バックアップ方式
+
+5.5 AZサービス
+
+6 AZ自動冗長化される
+
+
 
 ### StorageGateway  
 
