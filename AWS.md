@@ -41,6 +41,10 @@ JeOS AMI 　OSだけをイメージにする。他は設定ファイルやAgant�
 
 起動時間が長くなる
 
+6.4 Amazon EBS-Backed AMI 
+
+6.5 Amazon Instance Store-Backed AMI
+
 
 
 
@@ -140,7 +144,9 @@ Direct Connect gateway や VPNはVPCに繋ぐするとき必要なもの
 
 1.リードレプリカ　異なるリージョン　→　可用性向上　→　SLA
 
+2.64Tibまで提供
 
+3.レプリカは100ミリ秒未満提供できる→　Mysqlは100ミリ秒ができない場合があります。　→  Oracle MicrosoftSQL Server が　サポートしてないでです。
 
 
 
@@ -180,7 +186,19 @@ Direct Connect gateway や VPNはVPCに繋ぐするとき必要なもの
 
 6 AZ自動冗長化される
 
+7 RAIDを作成するとき、RAID5,6を使用すると、IOPSの一部がパリティ書き込みによって消費される
 
+8 
+
+
+
+### インスタンストア
+
+EC2インスタンスに内蔵されているローカルストレージ
+
+EC2の一時的なデータが保存され、EC2の停止、終了とともにクリアされる
+
+無料で使用可能 
 
 ### StorageGateway  
 
@@ -200,7 +218,7 @@ Direct Connect gateway や VPNはVPCに繋ぐするとき必要なもの
 
 4.2結果整合性　既存ファイルを上書き・削除した後に読み込むを行わっても問題がない
 
-
+5.マルチパートアップロード
 
 ## 負荷分散
 
@@ -247,4 +265,26 @@ Direct Connect gateway や VPNはVPCに繋ぐするとき必要なもの
 ## オンプレミスからAWS
 
 1.仮想マシン(VM)からAWSに移行 → VM Import/Export
+
+## 監視、ログ
+
+### cloudwatch 
+
+アクションを監視できる
+
+
+
+## その他
+
+1.障害の場合、AWSへ連絡してからの応答時間は1時間
+
+2.Amazon SWF　→　Amazon Simple Workflow(マネージド型のワークフローサービス) 
+
+2.1 スマホの画像をS3へアップロード
+
+2.2 リサイズ
+
+2.3 メールで仲間へ送信
+
+
 
